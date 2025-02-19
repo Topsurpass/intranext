@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 
 function SideBarMenuGroup({ menuGroup }: { menuGroup: SideNavItem }) {
 	const { toggleCollapse } = useSideBarToggle();
-	
 
 	const fileredMenuList = menuGroup.menuList.filter((item) => {
 		return item;

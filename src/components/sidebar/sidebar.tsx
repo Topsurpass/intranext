@@ -6,7 +6,6 @@ import SideBarMenuGroup from '@/components/sidebar/sidebar-menu-group';
 import SIDENAV_ITEMS from '@/routes/menu-list';
 import { cn } from '@/lib/utils';
 import { SideNavItem } from '@/types/sidenav-item';
-// import HeroPic from '@/assets/me-hero.jpg';
 
 function SideBar() {
 	const { toggleCollapse } = useSideBarToggle();
@@ -23,23 +22,24 @@ function SideBar() {
 		<aside className={asideStyle}>
 			<div
 				className={cn(
-					'sidebar-top fixed flex items-center px-4 py-4 backdrop-blur',
-					//'shadow-sm shadow-slate-500/40',
+					'sidebar-top fixed flex items-center px-4 py-3 backdrop-blur border',
 					{
 						'w-[20rem]': !toggleCollapse,
-						'left-[-100%] sm:left-0 sm:w-[5.4rem]': toggleCollapse,
+						'left-[-100%] sm:left-0 sm:w-[5.4rem] justify-center':
+							toggleCollapse,
 					}
 				)}
 			>
 				<div className="flex flex-col gap-3 text-black dark:text-white">
-					{/* <img src={HeroPic} alt="logo" className="h-12 w-12 rounded-full" /> */}
-					<h3 className="text-2xl font-extrabold leading-5">ALX</h3>
+					<h3 className="text-2xl md:text-3xl font-serif leading-5">
+						ALX
+					</h3>
 					<div
 						className={cn('min-w-max', {
 							hidden: toggleCollapse,
 						})}
 					>
-						<p className=" text-sm font-extralight leading-3">
+						<p className=" text-sm font-serif font-extralight leading-3">
 							Software Engineering programme
 						</p>
 					</div>

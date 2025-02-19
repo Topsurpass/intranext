@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import quizData from '@/data/quiz_data';
-import { cn } from '@/lib/utils';
 import {
 	Card,
 	CardHeader,
