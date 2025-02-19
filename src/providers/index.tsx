@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
 import { ThemeProvider } from './theme-provider';
+import ReactQueryProvider from './react-query-provider';
 
 export default function Provider({ children }: { children: React.ReactNode }) {
 	return (
@@ -9,7 +12,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
 			enableSystem
 			disableTransitionOnChange
 		>
-			{children}
+			<ReactQueryProvider>{children}</ReactQueryProvider>
 		</ThemeProvider>
 	);
 }
