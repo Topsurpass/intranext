@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { jwtDecode } from 'jwt-decode';
+import { toast } from 'sonner';
 import { HTTP } from '@/lib/http-clients';
 import { setAuthTokenHTTP } from '@/lib/set-auth-token';
 import useAuthStore from '@/store/user-store';
@@ -53,8 +54,9 @@ const useLoginUser = () => {
 			queryClient.invalidateQueries();
 		},
 		onError: (err: { response?: { data?: { detail?: string } } }) => {
-			console.log(err);
-			return err?.response?.data?.detail;
+			toast.error('Login failed', {
+				description: err?.response?.data?.detail,
+			});
 		},
 	});
 };

@@ -8,17 +8,22 @@ import {
 	CardDescription,
 } from '@/components/ui/card';
 import { FiPlayCircle } from 'react-icons/fi';
+import useAuthStore from '@/store/user-store';
 
 export default function Welcome() {
+			const firstName = useAuthStore((state) => state.firstname);
+
+
 	return (
 		<Card className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-background">
 			<CardHeader className="">
 				<CardTitle className="text-2xl font-semibold tracking-tight">
-					Welcome Back, Temitope
+					Welcome Back, {firstName}!
 					<span className="ml-2 text-2xl">👋</span>
 				</CardTitle>
 				<CardDescription className="">
-					We recognize your grit and consistency in learning. Keep it up!
+					We recognize your grit and consistency in learning. Keep it
+					up!
 				</CardDescription>
 			</CardHeader>
 			<CardContent>

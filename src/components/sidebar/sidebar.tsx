@@ -6,9 +6,14 @@ import SideBarMenuGroup from '@/components/sidebar/sidebar-menu-group';
 import SIDENAV_ITEMS from '@/routes/menu-list';
 import { cn } from '@/lib/utils';
 import { SideNavItem } from '@/types/sidenav-item';
+import { Button } from '@/components/ui/button';
+import useAuthStore from '@/store/user-store';
+import Image from 'next/image';
+import logo from '@/assets/logo.svg';
 
 function SideBar() {
 	const { toggleCollapse } = useSideBarToggle();
+	const logout = useAuthStore((state) => state.reset);
 
 	const asideStyle = classNames(
 		'bg-sidebar text-white overflow-y-auto overflow-x-auto fixed h-full shadow-sm shadow-slate-500/40 transition duration-300 ease-in-out z-[50]',
@@ -30,17 +35,25 @@ function SideBar() {
 					}
 				)}
 			>
-				<div className="flex flex-col gap-3 text-black dark:text-white">
-					<h3 className="text-2xl md:text-3xl font-serif leading-5">
-						ALX
-					</h3>
+				<div className="flex gap-2 text-black  dark:text-white h-[50px] items-end">
+					<div className="w-full h-full flex items-start justify-start">
+						<div className="relative inset-0 w-[50px] h-[50px]">
+							<Image
+								src={logo}
+								alt="ALX"
+								className="h-full object-cover"
+								layout="fill"
+							/>
+						</div>
+					</div>
+
 					<div
 						className={cn('min-w-max', {
 							hidden: toggleCollapse,
 						})}
 					>
 						<p className=" text-sm font-serif font-extralight leading-3">
-							Software Engineering programme
+							Temz&Tech
 						</p>
 					</div>
 				</div>
@@ -51,7 +64,7 @@ function SideBar() {
 					{}
 				)}
 			>
-				<div className="flex flex-col gap-5 px-4 pt-10">
+				<div className="flex flex-col gap-5 px-4 pt-12">
 					{SIDENAV_ITEMS.map((item: SideNavItem) => {
 						return (
 							<SideBarMenuGroup
@@ -62,7 +75,16 @@ function SideBar() {
 					})}
 				</div>
 			</nav>
-			{/*<IdleTimerModal />*/}
+
+			<div className="flex justify-center mt-4">
+				<Button
+					onClick={logout}
+					className="bg-primary w-full mx-4 mb-2 dark:bg-red-700"
+					type="button"
+				>
+					Logout
+				</Button>
+			</div>
 		</aside>
 	);
 }

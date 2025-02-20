@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import PrivateRouteLayout from '@/app/(private)/private-route-layout';
 
 export const metadata: Metadata = {
-	title: 'Learner dashboard Lagos Intranet',
-	description: 'Welcome to your dashboard',
+	title: 'Learner dashboard',
+	description: 'Welcome to the learner dashboard',
 };
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
