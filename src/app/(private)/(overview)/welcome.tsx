@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import {
 	Card,
@@ -11,8 +11,7 @@ import { FiPlayCircle } from 'react-icons/fi';
 import useAuthStore from '@/store/user-store';
 
 export default function Welcome() {
-			const firstName = useAuthStore((state) => state.firstname);
-
+	const firstName = useAuthStore((state) => state.firstname);
 
 	return (
 		<Card className="relative overflow-hidden bg-gradient-to-br from-primary/5 to-background">
@@ -48,4 +47,3 @@ export default function Welcome() {
 		</Card>
 	);
 }
-
