@@ -40,9 +40,11 @@ function SideBar() {
 						<div className="relative inset-0 w-[50px] h-[50px]">
 							<Image
 								src={logo}
+								width={500}
+								height={500}
 								alt="ALX"
 								className="h-full object-cover"
-								layout="fill"
+								//layout="fill"
 							/>
 						</div>
 					</div>

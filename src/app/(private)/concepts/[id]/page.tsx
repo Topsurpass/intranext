@@ -1,11 +1,9 @@
 'use client';
 
-export default function Page({ params }: { params: { id: string } }) {
-	const { id } = params;
+import { use } from 'react';
 
-	return (
-		<div className="">
-			This is the concept page for concept with id {id}
-		</div>
-	);
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
+	const { id } = use(params);
+
+	return <div>This is the concept page for concept with id {id}</div>;
 }
