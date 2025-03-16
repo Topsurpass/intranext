@@ -42,11 +42,11 @@ const useLoginUser = () => {
 			}
 		},
 		onSuccess: (res) => {
-			const { access_token: token, ...rest } = res.data;
-			setAuthTokenHTTP(token);
-			const decodedToken = jwtDecode(token);
+			const { access_token, ...rest } = res.data;
+			setAuthTokenHTTP(access_token);
+			const decodedToken = jwtDecode(access_token);
 			addUserToStore({
-				token,
+				access_token,
 				...rest,
 				...decodedToken,
 			} as ILogin);

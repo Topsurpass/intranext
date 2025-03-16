@@ -7,8 +7,6 @@ import { IoAlertCircleOutline } from 'react-icons/io5';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
-import logo from '@/assets/logo.svg';
 import {
 	Card,
 	CardContent,
@@ -55,7 +53,6 @@ export default function SignUp() {
 				<Card className="">
 					<CardHeader className="text-center">
 						{' '}
-						<Image src={logo} alt="ALX" className=" " />
 						<CardTitle className="text-2xl md:text-3xl font-bold ">
 							Create Learner Account
 						</CardTitle>
