@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	const id = params.id;
 
 	const subNavLinks = [
-		{ label: 'Resources', href: `/projects/${id}/concepts` },
+		{ label: 'Resources', href: `/projects/${id}/resources` },
 		{ label: 'Short quiz', href: `/projects/${id}/quiz` },
 		{ label: 'Task', href: `/projects/${id}` },
 	];
@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 						<Link
 							key={link.href}
 							href={link.href}
-							className={`py-2 px-4${
+							className={`font-bold py-2 ${
 								pathname === link.href
 									? 'font-semibold border-b-2 border-red-500'
 									: 'border-transparent text-gray-600 dark:text-gray-500 hover:text-red-500'

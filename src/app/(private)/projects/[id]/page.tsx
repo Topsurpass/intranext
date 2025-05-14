@@ -6,35 +6,20 @@ import ReactMarkdown from 'react-markdown';
 import { FaLevelUpAlt } from 'react-icons/fa';
 import { IoSettings } from 'react-icons/io5';
 import { GiTimeBomb } from 'react-icons/gi';
-import HashLoader from 'react-spinners/HashLoader';
+import ProjectSkeleton from '@/components/skeletons/project-skeleton';
+import NotFound from '@/components/not-found';
 
 export default function Page() {
 	const params = useParams<{ id: string }>();
 	const id = params.id;
 
-	const {
-		data: lessonData,
-		isLoading,
-		isError,
-		error,
-	} = useGetLessonById(id);
+	const { data: lessonData, isLoading, isError } = useGetLessonById(id);
 
-	if (isLoading) return (
-		<HashLoader
-			// color={color}
-			loading={true}
-			size={150}
-			aria-label="Loading Spinner"
-			data-testid="loader"
-		/>
-	);
-	if (isError)
-		return (
-			<p className="text-red-500">Error: {(error as Error).message}</p>
-		);
+	if (isLoading) return <ProjectSkeleton />;
+
+	if (isError) return <NotFound />;
 
 	if (!lessonData) return <p>Lesson not found</p>;
-
 
 	return (
 		<section className="space-y-4">
@@ -68,7 +53,7 @@ export default function Page() {
 							idx: number
 						) => (
 							<div className="border rounded" key={idx}>
-								<div className="border-b p-2">
+								<div className="border-b p-2 bg-slate-50  text-black">
 									<p>{`${idx}. ${val.title}`}</p>
 								</div>
 								<div className="min-h-44 p-2">

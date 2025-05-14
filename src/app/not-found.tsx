@@ -7,16 +7,14 @@ export default function NotFoundPage() {
 	const router = useRouter();
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+		<div className="min-h-screen  flex items-center justify-center p-4">
 			<div className="max-w-md w-full space-y-6 text-center">
-				{/* Error Symbol Container */}
 				<div className="animate-pulse">
 					<div className="mx-auto h-24 w-24 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center">
 						<BiError className="text-4xl text-rose-600 dark:text-rose-400" />
 					</div>
 				</div>
 
-				{/* Error Content */}
 				<div className="space-y-3">
 					<h1 className="text-5xl font-bold text-gray-900 dark:text-gray-100">
 						404
@@ -30,7 +28,6 @@ export default function NotFoundPage() {
 					</p>
 				</div>
 
-				{/* Action Buttons */}
 				<div className="flex flex-col sm:flex-row gap-4 justify-center">
 					<button
 						onClick={() => router.back()}
@@ -54,7 +51,6 @@ export default function NotFoundPage() {
 					</button>
 				</div>
 
-				{/* Additional Help */}
 				<p className="text-sm text-gray-500 dark:text-gray-400 mt-8">
 					Need assistance? Contact our{' '}
 					<a
