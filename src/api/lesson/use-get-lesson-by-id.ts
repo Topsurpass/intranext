@@ -8,7 +8,6 @@ const url = `/api/lesson`;
 export const getLessonById = async (id: string) => {
 	try {
 		const res = await AuthHTTP.get(`${url}/${id}`);
-		console.log('Lesson:', res.data);
 		return res.data;
 	} catch (error: unknown) {
 		const axiosError = error as AxiosError;
