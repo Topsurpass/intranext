@@ -19,6 +19,8 @@
 //} satisfies Config;
 
 import shwPreset from './src/@plugins/global-preset';
+import typography from '@tailwindcss/typography';
+
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -111,7 +113,9 @@ const config = {
     	}
     },
 	presets: [shwPreset],
-	plugins: [require('tailwindcss-animate')],
+	
+	plugins: [typography],
+	// require('tailwindcss-animate'),
 };
 
 export default config;

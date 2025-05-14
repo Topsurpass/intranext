@@ -1,0 +1,8 @@
+enum QueryKeys {
+	GET_LESSON = 'GET_LESSON',
+	GET_LESSONS = 'GET_LESSONS',
+	GET_CONCEPTS = 'GET_CONCEPTS',
+	GET_TECHSTACKS = 'GET_TECHSTACKS',
+}
+
+export default QueryKeys;

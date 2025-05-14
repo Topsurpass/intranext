@@ -8,10 +8,14 @@ import {
 	CardDescription,
 	CardContent,
 } from '@/components/ui/card';
-import ProjectAccordion from './project-accordion';
-import { currentProjectData } from '@/data/projects_data';
+import TechstackAccordion from './techstack-accordion';
+import { useGetTechstacks } from '@/api/techstack/use-get-techstack';
+import { ProjectAccordionSkeleton } from '@/components/skeletons/project-skeleton';
+
 export default function Page() {
-	
+	const { data: techstacksData, isLoading } = useGetTechstacks();
+	{
+	}
 	return (
 		<Card className="rounded-none border-none p-0 shadow-none">
 			<CardHeader className="border-none border-0 px-0">
@@ -39,11 +43,11 @@ export default function Page() {
 					</div>
 				</div>
 			</CardContent>
-			<ProjectAccordion
-				data={currentProjectData}
-				variant="card"
-				className="my-4"
-			/>
+			{isLoading ? (
+				<ProjectAccordionSkeleton />
+			) : (
+				<TechstackAccordion data={techstacksData} className="my-4" />
+			)}
 		</Card>
 	);
 }

@@ -2,17 +2,8 @@ import { SideNavItem } from '../types/sidenav-item';
 import { PiGitBranchBold } from 'react-icons/pi';
 import { GrCheckmark } from 'react-icons/gr';
 import { IoHome } from 'react-icons/io5';
-import {
-	BsQuestionLg,
-	BsFilm,
-	BsFillFileEarmarkTextFill,
-} from 'react-icons/bs';
+import { BsQuestionLg, BsFillFileEarmarkTextFill } from 'react-icons/bs';
 import { FaGraduationCap } from 'react-icons/fa';
-import { SiWechat } from 'react-icons/si';
-import { BiSolidServer, BiSolidBook } from 'react-icons/bi';
-import { LiaGreaterThanEqualSolid } from 'react-icons/lia';
-import { GiSpanner } from 'react-icons/gi';
-import { MdGroups } from 'react-icons/md';
 
 const SIDENAV_ITEMS: SideNavItem[] = [
 	{
@@ -25,7 +16,7 @@ const SIDENAV_ITEMS: SideNavItem[] = [
 			},
 			{
 				title: 'Projects',
-				path: '/projects/current',
+				path: '/projects',
 				icon: <PiGitBranchBold />,
 			},
 			{
@@ -47,41 +38,6 @@ const SIDENAV_ITEMS: SideNavItem[] = [
 				title: 'Concepts',
 				path: '/concepts',
 				icon: <BsFillFileEarmarkTextFill />,
-			},
-			{
-				title: 'Conference rooms',
-				path: '/dashboards/video_rooms',
-				icon: <SiWechat />,
-			},
-			{
-				title: 'Servers',
-				path: '/servers',
-				icon: <BiSolidServer />,
-			},
-			{
-				title: 'Sandboxes',
-				path: '/user_containers/current',
-				icon: <LiaGreaterThanEqualSolid />,
-			},
-			{
-				title: 'Tools',
-				path: '/my_tools',
-				icon: <GiSpanner />,
-			},
-			{
-				title: 'Video on Demands',
-				path: '/dashboards/videos',
-				icon: <BsFilm />,
-			},
-			{
-				title: 'Peers',
-				path: '/peers',
-				icon: <MdGroups />,
-			},
-			{
-				title: 'Captains log',
-				path: '/my_captain_log',
-				icon: <BiSolidBook />,
 			},
 		],
 	},

@@ -1,5 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { jwtDecode } from 'jwt-decode';
+
+import { toast } from 'sonner';
 import { HTTP } from '@/lib/http-clients';
 import { setAuthTokenHTTP } from '@/lib/set-auth-token';
 import useAuthStore from '@/store/user-store';
@@ -41,11 +43,11 @@ const useLoginUser = () => {
 			}
 		},
 		onSuccess: (res) => {
-			const { access_token: token, ...rest } = res.data;
-			setAuthTokenHTTP(token);
-			const decodedToken = jwtDecode(token);
+			const { access_token, ...rest } = res.data;
+			setAuthTokenHTTP(access_token);
+			const decodedToken = jwtDecode(access_token);
 			addUserToStore({
-				token,
+				access_token,
 				...rest,
 				...decodedToken,
 			} as ILogin);
@@ -53,8 +55,9 @@ const useLoginUser = () => {
 			queryClient.invalidateQueries();
 		},
 		onError: (err: { response?: { data?: { detail?: string } } }) => {
-			console.log(err);
-			return err?.response?.data?.detail;
+			toast.error('Login failed', {
+				description: err?.response?.data?.detail,
+			});
 		},
 	});
 };

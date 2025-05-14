@@ -41,7 +41,10 @@ export default function SideBarMenuItem({ item }: { item: MenuList }) {
 					<button
 						type="button"
 						className={`${dropdownMenuHeaderLink} ${
-							pathname.includes(item.path) ? activeLink : ''
+							pathname === item.path ||
+							pathname.startsWith(`${item.path}/`)
+								? activeLink
+								: ''
 						}`}
 						onClick={toggleSubMenu}
 					>
@@ -88,7 +91,10 @@ export default function SideBarMenuItem({ item }: { item: MenuList }) {
 				<Link
 					href={item.path}
 					className={`${inactiveLink} ${
-						item.path === pathname ? activeLink : ''
+						pathname === item.path ||
+						pathname.startsWith(`${item.path}/`)
+							? activeLink
+							: ''
 					} hover:bg-sidebarhover`}
 					onClick={closeSidebarOnMobile}
 				>

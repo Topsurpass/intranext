@@ -1,13 +1,12 @@
 'use client';
 
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import {
 	ColumnDef,
 	PaginationState,
 	VisibilityState,
 } from '@tanstack/react-table';
 import DataTableSSR from '@/components/table/datatable-ssr';
-import { Concept, conceptData } from '@/data/concept-data';
 import {
 	Card,
 	CardHeader,
@@ -15,27 +14,30 @@ import {
 	CardDescription,
 } from '@/components/ui/card';
 import Link from 'next/link';
+import { useGetConcepts } from '@/api/concept/use-get-concepts';
+import { Concept } from '@/data/concept-data';
 
 export default function ConceptTable() {
 	const [searchText, setSearchText] = useState('');
 	const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
 		{}
 	);
-	const [filteredData, setFilteredData] = useState<Concept[]>(
-		conceptData.data
-	);
 	const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
 		pageIndex: 0,
 		pageSize: 10,
 	});
 
-	useEffect(() => {
-		const filtered = conceptData.data.filter((concept) =>
-			concept.topic.toLowerCase().includes(searchText.toLowerCase())
+	const { data, isLoading, isError, error } = useGetConcepts();
+
+	const concepts: Concept[] = useMemo(() => data || [], [data]);
+
+	const filteredData = useMemo(() => {
+		return concepts.filter((concept) =>
+			(concept.title?.toLowerCase() ?? '').includes(
+				searchText.toLowerCase()
+			)
 		);
-		setFilteredData(filtered);
-		setPagination((prev) => ({ ...prev, pageIndex: 0 }));
-	}, [searchText]);
+	}, [concepts, searchText]);
 
 	const paginatedData = useMemo(() => {
 		const start = pageIndex * pageSize;
@@ -45,35 +47,40 @@ export default function ConceptTable() {
 	const columns = useMemo<ColumnDef<Concept>[]>(
 		() => [
 			{
-				accessorKey: 'topic',
+				accessorKey: 'title',
 				header: () => (
-					<span className="text-xl font-semibold">Concept Topic</span>
+					<span className="text-xl font-semibold">Concept Title</span>
 				),
 				cell: ({ row }) => (
-					<span className="font-medium text-foreground hover:text-primary transition-colors">
-						<Link
-							href={`/concepts/${row.original.id}`}
-							className="hover:underline "
-						>
-							{row.original.topic}
-						</Link>
-					</span>
+					<Link
+						href={`/concepts/${row.original.id}`}
+						className="font-medium text-foreground hover:text-primary transition-colors hover:underline"
+					>
+						{row.original.title}
+					</Link>
 				),
 			},
 		],
 		[]
 	);
 
+	if (isError)
+		return (
+			<p className="text-red-500 text-center">
+				Error: {(error as Error).message}
+			</p>
+		);
+
 	return (
-		<Card className="rounded-lg border-0 shadow-none space-y-3 flex flex-col ">
+		<Card className="rounded-lg border-0 shadow-none space-y-3 flex flex-col">
 			<CardHeader className="px-0">
 				<div className="flex flex-col space-y-1.5">
 					<CardTitle className="text-2xl font-semibold leading-none tracking-tight">
 						Technical Concepts Library
 					</CardTitle>
 					<CardDescription className="text-muted-foreground">
-						{conceptData.totalRecords} essential development
-						concepts to master
+						{concepts.length} essential development concepts to
+						master
 					</CardDescription>
 				</div>
 			</CardHeader>
@@ -87,10 +94,11 @@ export default function ConceptTable() {
 				setPagination={setPagination}
 				setSearchText={setSearchText}
 				pageSizeOptions={[5, 10, 15, 25]}
-				isLoading={false}
+				isLoading={isLoading}
 				columnVisibility={columnVisibility}
 				setColumnVisibility={setColumnVisibility}
 				showFilter={false}
+				numOfSkeletonRows={5}
 			/>
 		</Card>
 	);

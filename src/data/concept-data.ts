@@ -1,6 +1,7 @@
 export interface Concept {
 	id: number;
 	topic: string;
+	title?: string;
 	category:
 		| 'Foundation'
 		| 'Advanced'
