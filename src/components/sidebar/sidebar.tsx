@@ -16,7 +16,7 @@ function SideBar() {
 	const logout = useAuthStore((state) => state.reset);
 
 	const asideStyle = classNames(
-		'bg-sidebar text-white overflow-y-auto overflow-x-auto fixed h-full shadow-sm shadow-slate-500/40 transition duration-300 ease-in-out z-[50]',
+		'bg-sidebar text-white fixed top-0 left-0 h-full shadow-sm shadow-slate-500/40 transition-all z-[50] flex flex-col',
 		{
 			'w-[20rem]': !toggleCollapse,
 			'sm:w-[5.4rem] sm:left-0 left-[-100%]': toggleCollapse,
@@ -27,7 +27,7 @@ function SideBar() {
 		<aside className={asideStyle}>
 			<div
 				className={cn(
-					'sidebar-top fixed flex items-center px-4 py-3 backdrop-blur border',
+					'sidebar-top flex items-center px-4 py-3 backdrop-blur border-b',
 					{
 						'w-[20rem]': !toggleCollapse,
 						'left-[-100%] sm:left-0 sm:w-[5.4rem] justify-center':
@@ -35,7 +35,7 @@ function SideBar() {
 					}
 				)}
 			>
-				<div className="flex gap-2 text-black  dark:text-white h-[50px] items-end">
+				<div className="flex gap-2 text-black dark:text-white h-[50px] items-end">
 					<div className="w-full h-full flex items-start justify-start">
 						<div className="relative inset-0 w-[50px] h-[50px]">
 							<Image
@@ -44,7 +44,6 @@ function SideBar() {
 								height={500}
 								alt="ALX"
 								className="h-full object-cover"
-								//layout="fill"
 							/>
 						</div>
 					</div>
@@ -54,34 +53,23 @@ function SideBar() {
 							hidden: toggleCollapse,
 						})}
 					>
-						<p className=" text-sm font-serif font-extralight leading-3">
+						{/* <p className="text-sm font-serif font-extralight leading-3">
 							Temz&Tech
-						</p>
+						</p> */}
 					</div>
 				</div>
 			</div>
-			<nav
-				className={cn(
-					'flex flex-col gap-2 pt-14 transition duration-300 ease-in-out text-black dark:text-white',
-					{}
-				)}
-			>
-				<div className="flex flex-col gap-5 px-4 pt-12">
-					{SIDENAV_ITEMS.map((item: SideNavItem) => {
-						return (
-							<SideBarMenuGroup
-								key={item.title}
-								menuGroup={item}
-							/>
-						);
-					})}
-				</div>
+
+			<nav className="flex-1 overflow-y-auto pt-5 px-4 space-y-5 text-black dark:text-white">
+				{SIDENAV_ITEMS.map((item: SideNavItem) => (
+					<SideBarMenuGroup key={item.title} menuGroup={item} />
+				))}
 			</nav>
 
-			<div className="flex justify-center mt-4">
+			<div className="p-4 mt-auto">
 				<Button
 					onClick={logout}
-					className="bg-primary w-full mx-4 mb-2 dark:bg-red-700"
+					className="bg-primary w-full dark:bg-red-700"
 					type="button"
 				>
 					Logout
