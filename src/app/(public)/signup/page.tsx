@@ -43,7 +43,7 @@ export default function SignUp() {
 	};
 
 	return (
-		<div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden ">
+		<div className="relative flex md:min-h-screen flex-col items-center justify-center overflow-hidden ">
 			{/*<pre>{JSON.stringify(watch(), null, 2)}</pre>*/}
 
 			<form
