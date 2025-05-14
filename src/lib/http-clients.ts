@@ -4,10 +4,16 @@ import config from '@/@config';
 import { jwtDecode } from 'jwt-decode';
 import useAuthStore from '@/store/user-store';
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
 // PUBLIC HTTP client
+=======
+import { setAuthTokenHTTP } from '@/lib/set-auth-token';
+
+
+>>>>>>> develop
 =======
 import { setAuthTokenHTTP } from '@/lib/set-auth-token';
 
@@ -19,7 +25,10 @@ export const HTTP = axios.create({
 });
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Authenticated HTTP client : for request that require accessToken
+=======
+>>>>>>> develop
 =======
 >>>>>>> develop
 const AuthHTTP = axios.create({
@@ -27,6 +36,7 @@ const AuthHTTP = axios.create({
 	timeout: config.httpTimeout,
 });
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 // Function to refresh the access token
 export const refreshAccessToken = async () => {
@@ -95,6 +105,8 @@ AuthHTTP.interceptors.response.use(
 
 export default AuthHTTP;
 =======
+=======
+>>>>>>> develop
 const isTokenExpired = (token: string): boolean => {
 	try {
 		const decoded: any = jwtDecode(token);
@@ -182,4 +194,7 @@ AuthHTTP.interceptors.response.use(
 );
 
 export default AuthHTTP;
+<<<<<<< HEAD
+>>>>>>> develop
+=======
 >>>>>>> develop

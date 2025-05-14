@@ -16,7 +16,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
-
 import Link from 'next/link';
 import { TextField, PasswordField, Checkbox } from '@/components/ui/form';
 import { LoginInputs, LoginSchema } from '@/validations/login-schema';
@@ -142,4 +141,3 @@ export default function Login() {
 			</form>
 		</div>
 	);
-}
