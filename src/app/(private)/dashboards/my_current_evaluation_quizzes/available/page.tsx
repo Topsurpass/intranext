@@ -2,29 +2,27 @@
 
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
-import { FiClock, FiBarChart2, FiArrowUpRight, FiInbox } from 'react-icons/fi';
-import { useGetCoursesScores } from '@/api/exam/use-get-all-course-scores';
-import { cn } from '@/lib/utils';
+import { FiClock, FiArrowUpRight, FiInbox } from 'react-icons/fi';
+import { useGetAvailableExams } from '@/api/exam/use-get-available-exams';
 import Empty from '@/components/empty';
 
 export default function Page() {
-	const { data: CoursesScoreData } = useGetCoursesScores();
+	const { data: AvailableExamsData } = useGetAvailableExams();
 
-	const isEmpty =
-		!CoursesScoreData?.completed_courses ||
-		CoursesScoreData?.completed_courses.length === 0;
+	const isEmpty = !AvailableExamsData || AvailableExamsData.length === 0;
 
 	return (
 		<Card className="rounded-none border-none p-0 shadow-sm">
 			<CardContent className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 px-0">
 				{isEmpty ? (
 					<Empty
-						title="No Completed Exams"
-						description="You currently have no completed exams."
+						title="No Available Exams"
+						description="You currently have no exams assigned or available to take. Please check back later."
 						Icon={FiInbox}
 					/>
 				) : (
-					CoursesScoreData?.completed_courses?.map((data, idx) => (
+					// eslint-disable-next-line @typescript-eslint/no-explicit-any
+					AvailableExamsData?.map((data: any) => (
 						<div
 							key={data?.course_id}
 							className="group relative overflow-hidden rounded-xl border bg-card p-6 transition-all hover:border-primary/30 hover:bg-gradient-to-br hover:from-card/50 hover:to-[rgba(255,255,255,0.15)] hover:shadow-md dark:hover:to-[rgba(0,0,0,0.2)]"
@@ -35,12 +33,9 @@ export default function Page() {
 										<span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
 											Course title: {data?.course_title}
 										</span>
-										<span className="text-sm text-muted-foreground">
-											{data?.exams?.[0]?.submitted_at}
-										</span>
 									</div>
 									<h3 className="text-xl font-semibold">
-										{data?.exams?.[0]?.exam_title}
+										{data?.exam_title}
 									</h3>
 								</div>
 
@@ -49,25 +44,7 @@ export default function Page() {
 										<div className="flex items-center space-x-2">
 											<FiClock className="h-4 w-4 text-muted-foreground" />
 											<span className="text-sm">
-												{`${data?.exams?.[0]?.duration / 60} minutes`}
-											</span>
-										</div>
-										<div className="flex items-center space-x-2">
-											<FiBarChart2 className="h-4 w-4 text-muted-foreground" />
-											<span
-												className={cn(
-													'text-sm font-medium',
-													{
-														'text-emerald-600 dark:text-emerald-400':
-															data?.exams?.[0]
-																?.score >= 50,
-														'text-red-600 dark:text-red-600':
-															data?.exams?.[0]
-																?.score < 50,
-													}
-												)}
-											>
-												{data?.exams?.[0]?.score}%
+												{`${data?.duration / 60} minutes`}
 											</span>
 										</div>
 									</div>
@@ -76,18 +53,18 @@ export default function Page() {
 										<div
 											className="absolute left-0 h-full rounded-full bg-primary transition-all duration-500"
 											style={{
-												width: `${(data?.exams?.[0]?.score / 100) * 100}%`,
+												width: `${(0 / 100) * 100}`,
 											}}
 										/>
 									</div>
 								</div>
 
 								<Link
-									href={`/exam/${data?.exams?.[0]?.exam_id}/instructions`}
+									href={`/exam/${data?.exam_id}/instructions`}
 									className="flex items-center justify-between rounded-lg bg-muted/50 p-3 transition-colors hover:bg-muted"
 								>
 									<span className="text-sm font-medium">
-										View Exam Questions
+										Start Exam
 									</span>
 									<FiArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
 								</Link>

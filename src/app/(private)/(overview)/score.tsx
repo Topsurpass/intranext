@@ -9,12 +9,14 @@ import {
 	CardContent,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { FiCheckCircle } from 'react-icons/fi';
+import { FiCheckCircle, FiInbox } from 'react-icons/fi';
 import { useGetCoursesScores } from '@/api/exam/use-get-all-course-scores';
 import { cn } from '@/lib/utils';
+import Empty from '@/components/empty';
 
 export default function Scores() {
 	const { data: CoursesScoreData } = useGetCoursesScores();
+	const isEmpty = !CoursesScoreData || CoursesScoreData === 0;
 
 	return (
 		<Card className="bg-gradient-to-br from-primary/5 to-background">
@@ -43,7 +45,7 @@ export default function Scores() {
 									50,
 								'bg-red-900':
 									CoursesScoreData?.overall_average_score <
-									50 || 0,
+										50 || 0,
 							})}
 						>
 							{`Average: ${CoursesScoreData?.overall_average_score || 0}%`}
@@ -57,17 +59,27 @@ export default function Scores() {
 					<p className="font-bold">Scores</p>
 				</div>
 				<div className="w-full flex flex-col gap-5">
-					{CoursesScoreData?.completed_courses?.map(
-						(data: any, idx: number) => (
-							<div
-								className="object-entry flex  items-center justify-between border-t w-full"
-								key={idx}
-							>
-								<div className="key">{data?.course_title}</div>
-								<div className="value">
-									{data?.exams?.[0]?.score}%
+					{isEmpty ? (
+						<Empty
+							title="No scores yet"
+							description="Your scores will appear once you start taking courses examinations."
+							Icon={FiInbox}
+						/>
+					) : (
+						CoursesScoreData?.completed_courses?.map(
+							(data: any, idx: number) => (
+								<div
+									className="object-entry flex  items-center justify-between border-t w-full"
+									key={idx}
+								>
+									<div className="key">
+										{data?.course_title}
+									</div>
+									<div className="value">
+										{data?.exams?.[0]?.score}%
+									</div>
 								</div>
-							</div>
+							)
 						)
 					)}
 				</div>
