@@ -46,7 +46,7 @@ export default function Scores() {
 									50,
 							})}
 						>
-							{`Average: ${CoursesScoreData?.overall_average_score}%`}
+							{`Average: ${CoursesScoreData?.overall_average_score || 0}%`}
 						</Badge>
 					</div>
 				</div>
