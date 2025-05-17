@@ -6,7 +6,7 @@ import SideBarMenuGroup from '@/components/sidebar/sidebar-menu-group';
 import SIDENAV_ITEMS from '@/routes/menu-list';
 import { cn } from '@/lib/utils';
 import { SideNavItem } from '@/types/sidenav-item';
-
+import { LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import useAuthStore from '@/store/user-store';
 import Image from 'next/image';
@@ -54,9 +54,6 @@ function SideBar() {
 							hidden: toggleCollapse,
 						})}
 					>
-						{/* <p className="text-sm font-serif font-extralight leading-3">
-							Temz&Tech
-						</p> */}
 					</div>
 				</div>
 			</div>
@@ -68,13 +65,22 @@ function SideBar() {
 			</nav>
 
 			<div className="p-4 mt-auto">
-				<Button
-					onClick={logout}
-					className="bg-primary w-full dark:bg-red-700"
-					type="button"
-				>
-					Logout
-				</Button>
+				{toggleCollapse ? (
+					<div className="flex justify-center align-center">
+						<LogOut
+							className="text-red-700 cursor-pointer"
+							onClick={logout}
+						/>
+					</div>
+				) : (
+					<Button
+						onClick={logout}
+						className="bg-primary w-full dark:bg-red-700"
+						type="button"
+					>
+						Logout
+					</Button>
+				)}
 			</div>
 		</aside>
 	);
