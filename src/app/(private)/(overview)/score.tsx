@@ -43,7 +43,7 @@ export default function Scores() {
 									50,
 								'bg-red-900':
 									CoursesScoreData?.overall_average_score <
-									50,
+									50 || 0,
 							})}
 						>
 							{`Average: ${CoursesScoreData?.overall_average_score || 0}%`}
