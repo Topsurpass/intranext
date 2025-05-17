@@ -1,6 +1,6 @@
 import { SideNavItem } from '../types/sidenav-item';
 import { PiGitBranchBold } from 'react-icons/pi';
-import { GrCheckmark } from 'react-icons/gr';
+// import { GrCheckmark } from 'react-icons/gr';
 import { IoHome } from 'react-icons/io5';
 import { BsQuestionLg, BsFillFileEarmarkTextFill } from 'react-icons/bs';
 import { FaGraduationCap } from 'react-icons/fa';
@@ -19,11 +19,11 @@ const SIDENAV_ITEMS: SideNavItem[] = [
 				path: '/projects',
 				icon: <PiGitBranchBold />,
 			},
-			{
-				title: 'QA Reviews I can make',
-				path: '/corrections/to_review',
-				icon: <GrCheckmark />,
-			},
+			// {
+			// 	title: 'QA Reviews I can make',
+			// 	path: '/corrections/to_review',
+			// 	icon: <GrCheckmark />,
+			// },
 			{
 				title: 'Evaluation Quizzes',
 				path: '/dashboards/my_current_evaluation_quizzes',
