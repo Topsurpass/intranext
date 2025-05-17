@@ -3,9 +3,9 @@ import AuthHTTP from '@/lib/http-clients';
 import QueryKeys from '@/api/query-keys';
 import { AxiosError } from 'axios';
 
-const baseUrl = `/api/completed-courses`;
+const baseUrl = `/api/available-exams`;
 
-export const getCoursesScores = async (id?: string) => {
+export const getAvailableExams = async (id?: string) => {
 	try {
 		const endpoint = id ? `${baseUrl}/${id}` : baseUrl;
 		const res = await AuthHTTP.get(endpoint);
@@ -14,16 +14,16 @@ export const getCoursesScores = async (id?: string) => {
 		const axiosError = error as AxiosError;
 		const errorMessage =
 			axiosError.response?.statusText ||
-			(id ? 'Failed to fetch courses scores' : 'Failed to fetch courses scores');
+			(id ? 'Failed to fetch exams' : 'Failed to fetch exams');
 
 		throw new Error(errorMessage);
 	}
 };
 
-export function useGetCoursesScores(id?: string) {
+export function useGetAvailableExams(id?: string) {
 	return useQuery({
-		queryKey: [QueryKeys.GET_COURSES_SCORES, id],
-		queryFn: () => getCoursesScores(id),
+		queryKey: [QueryKeys.GET_AVAILABLE_EXAMS, id],
+		queryFn: () => getAvailableExams(id),
 		retry: false,
 	});
 }
