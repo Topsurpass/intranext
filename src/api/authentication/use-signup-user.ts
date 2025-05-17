@@ -3,7 +3,6 @@ import { HTTP } from '@/lib/http-clients';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
-
 type RequestPayload = {
 	first_name: string;
 	last_name: string;
@@ -28,6 +27,10 @@ const useSignupUser = () => {
 			}
 		},
 		onSuccess: () => {
+			toast.success('Signup Successful', {
+				description:
+					'Account created successfully. Please sign in with your new credentials',
+			});
 			router.push('/login');
 			queryClient.invalidateQueries();
 		},
