@@ -7,7 +7,7 @@ import {
 	CardDescription,
 	CardContent,
 } from '@/components/ui/card';
-import { FiArrowRight, FiPackage } from 'react-icons/fi';
+import { FiPackage } from 'react-icons/fi';
 import { ReactNode } from 'react';
 
 type EmptyStateProps = {
@@ -27,9 +27,6 @@ export default function CurrentProjects() {
 							Ongoing initiatives and tasks
 						</CardDescription>
 					</div>
-					<button className="flex items-center">
-						View All <FiArrowRight className="ml-2 h-4 w-4" />
-					</button>
 				</div>
 			</CardHeader>
 			<CardContent className="h-48">

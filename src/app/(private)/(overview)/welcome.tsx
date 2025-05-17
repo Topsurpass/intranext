@@ -25,7 +25,7 @@ export default function Welcome() {
 			</CardHeader>
 
 			<CardContent className="space-y-6">
-				<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+				{/* <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 					<div className="w-full space-y-2">
 						<p className="font-medium">Current Learning Progress</p>
 						<div className="relative w-full h-3 rounded-full bg-muted">
@@ -33,7 +33,7 @@ export default function Welcome() {
 						</div>
 						<p className="text-sm text-muted-foreground">Week 6 of 10</p>
 					</div>
-				</div>
+				</div> */}
 
 				<div className="rounded-lg flex items-center gap-2">
 					<HiOutlineLightBulb className="h-8 w-8 text-yellow-500" />
