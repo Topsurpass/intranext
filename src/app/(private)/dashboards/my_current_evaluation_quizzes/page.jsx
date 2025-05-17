@@ -32,8 +32,8 @@ export default function Page() {
 							<div className="flex flex-col justify-between space-y-4">
 								<div className="space-y-2">
 									<div className="flex flex-col md:flex-row md:items-center justify-between">
-										<span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-											Course title: {data?.course_title}
+										<span className="rounded-full py-1 text-lg font-medium text-primary">
+											{data?.course_title}
 										</span>
 										<span className='text-xs'>
 											{new Date(
@@ -44,7 +44,7 @@ export default function Page() {
 											})}
 										</span>
 									</div>
-									<h3 className="text-xl font-semibold">
+									<h3 className="font-semibold">
 										{data?.exams?.[0]?.exam_title}
 									</h3>
 								</div>
