@@ -5,7 +5,7 @@ export default function QuizInstruction({ params }: { params: Promise<{ id: stri
 	const { id } = use(params);
 
 	return (
-		<div className="min-h-screen py-12 px-4">
+		<div className="min-h-screen  px-4">
 			<QuizInstructions id={id}/>
 		</div>
 	);
