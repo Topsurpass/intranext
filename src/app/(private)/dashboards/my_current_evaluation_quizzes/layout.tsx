@@ -21,7 +21,9 @@ export const curriculumNav = [
 ];
 
 
-export default function Layout({ children }) {
+import { ReactNode } from 'react';
+
+export default function Layout({ children }: { children: ReactNode }) {
 	const pathname = usePathname();
 
 	return (
