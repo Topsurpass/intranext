@@ -6,6 +6,7 @@ enum QueryKeys {
 	GET_EXAM = 'GET_EXAM',
 	GET_COURSES_SCORES = 'GET_COURSES_SCORES',
 	GET_AVAILABLE_EXAMS = 'GET_AVAILABLE_EXAMS',
+	GET_USER = 'GET_USER',
 }
 
 export default QueryKeys;
