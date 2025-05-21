@@ -20,7 +20,7 @@ export default function Page() {
 						complemented by essential professional development
 						training. This intensive curriculum prepares students
 						for either specialization tracks or direct career
-						preparation through Holberton's Career Sprint program.
+						preparation through Holberton&#39;s Career Sprint program.
 					</p>
 				</div>
 			</div>
