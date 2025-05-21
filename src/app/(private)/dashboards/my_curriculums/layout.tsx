@@ -7,8 +7,9 @@ import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { FiDownload } from 'react-icons/fi';
 import CardTopHeader from '@/components/card-top-header';
+import { PropsWithChildren } from 'react';
 
-export default function Layout({ children }) {
+export default function Layout({ children }: PropsWithChildren) {
 	const pathname = usePathname();
 
 	return (
