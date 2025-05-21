@@ -1,21 +1,19 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import Empty from '@/components/empty';
+import { FiInbox } from 'react-icons/fi';
 import {
 	ColumnDef,
 	PaginationState,
 	VisibilityState,
 } from '@tanstack/react-table';
 import DataTableSSR from '@/components/table/datatable-ssr';
-import {
-	Card,
-	CardHeader,
-	CardTitle,
-	CardDescription,
-} from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 import { useGetConcepts } from '@/api/concept/use-get-concepts';
 import { Concept } from '@/data/concept-data';
+import CardTopHeader from '@/components/card-top-header';
 
 export default function ConceptTable() {
 	const [searchText, setSearchText] = useState('');
@@ -73,17 +71,14 @@ export default function ConceptTable() {
 
 	return (
 		<Card className="rounded-lg border-0 shadow-none space-y-3 flex flex-col">
-			<CardHeader className="px-0">
-				<div className="flex flex-col space-y-1.5">
-					<CardTitle className="text-2xl font-semibold leading-none tracking-tight">
-						Technical Concepts Library
-					</CardTitle>
-					<CardDescription className="text-muted-foreground">
-						{concepts.length} essential development concepts to
-						master
-					</CardDescription>
-				</div>
-			</CardHeader>
+			<CardTopHeader
+				title="Technical Concepts Library"
+				description={`${concepts.length} essential development concepts to
+				master`}
+				classNameHeader="px-0"
+				classNameTitle="text-2xl font-semibold leading-none tracking-tight"
+				classNameDescription="text-muted-foreground"
+			/>
 
 			<DataTableSSR
 				data={paginatedData}
@@ -99,6 +94,14 @@ export default function ConceptTable() {
 				setColumnVisibility={setColumnVisibility}
 				showFilter={false}
 				numOfSkeletonRows={5}
+				numOfSkeletonColumns={1}
+				emptyTableData={
+					<Empty
+						title="No concept available"
+						Icon={FiInbox}
+						description="Project concepts are yet to be uploaded. Please check back later"
+					/>
+				}
 			/>
 		</Card>
 	);

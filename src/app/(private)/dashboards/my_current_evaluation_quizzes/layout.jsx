@@ -5,11 +5,9 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import {
 	Card,
-	CardHeader,
-	CardTitle,
 	CardContent,
-	CardDescription,
 } from '@/components/ui/card';
+import CardTopHeader from '@/components/card-top-header';
 
 export const curriculumNav = [
 	{
@@ -28,15 +26,11 @@ export default function Layout({ children }) {
 
 	return (
 		<Card className="shadow-none rounded-none border-none p-0">
-			<CardHeader className="border-none border-0 px-0">
-				<CardTitle className="text-2xl font-semibold tracking-tight">
-					Evaluation Quizzes
-				</CardTitle>
-				<CardDescription className="">
-					Comprehensive performance tracking through monthly
-					assessments
-				</CardDescription>
-			</CardHeader>
+			<CardTopHeader
+				title="Evaluation Quizzes"
+				description="Comprehensive performance tracking through monthly
+					assessments"
+			/>
 
 			<CardContent className="space-y-6 p-0 border-none">
 				<nav className="flex space-x-4 border-b">

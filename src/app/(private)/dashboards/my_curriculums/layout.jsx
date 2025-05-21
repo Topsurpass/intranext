@@ -4,41 +4,33 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { curriculumNav } from '@/data/navLinks';
 import { cn } from '@/lib/utils';
-import {
-	Card,
-	CardHeader,
-	CardTitle,
-	CardContent,
-	CardDescription,
-} from '@/components/ui/card';
-import { FiDownload, FiChevronRight } from 'react-icons/fi';
+import { Card, CardContent } from '@/components/ui/card';
+import { FiDownload } from 'react-icons/fi';
+import CardTopHeader from '@/components/card-top-header';
 
 export default function Layout({ children }) {
 	const pathname = usePathname();
 
 	return (
 		<Card className="shadow-none rounded-none border-none p-0 space-y-6">
-			<CardHeader className="flex flex-col gap-4 px-0 md:flex-row md:items-center md:justify-between">
-				<div className="space-y-1">
-					<CardTitle className="text-2xl font-semibold tracking-tight">
-						Academic Curriculum
-					</CardTitle>
-					<CardDescription className="text-muted-foreground">
-						Track your academic progress and manage credentials
-					</CardDescription>
-				</div>
+			<div className="flex flex-col gap-4 px-0 md:flex-row md:items-center md:justify-between">
+				<CardTopHeader
+					title="Academic Curriculum"
+					description="Track your academic progress and manage credentials"
+					classNameTitle="text-2xl font-semibold tracking-tight"
+					classNameDescription="text-muted-foreground"
+				/>
 
 				<Link
 					href="#"
-					className="group flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-primary transition-colors hover:bg-primary/20"
+					className="group flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-primary transition-colors hover:bg-primary/20 w-fit"
 				>
 					<FiDownload className="h-4 w-4" />
 					<span className="text-sm font-medium">
 						Download Transcript
 					</span>
-					<FiChevronRight className="h-4 w-4 opacity-0 transition-all group-hover:opacity-100" />
 				</Link>
-			</CardHeader>
+			</div>
 
 			<CardContent className="space-y-6 p-0 border-none">
 				<nav className="flex space-x-4 border-b">

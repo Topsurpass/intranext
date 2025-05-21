@@ -5,16 +5,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import { FiClock, FiArrowUpRight, FiInbox } from 'react-icons/fi';
 import { useGetAvailableExams } from '@/api/exam/use-get-available-exams';
 import Empty from '@/components/empty';
+import { EvaluationSkeleton } from '@/components/skeletons/evaluation-skeleton';
 
 export default function Page() {
-	const { data: AvailableExamsData } = useGetAvailableExams();
+	const { data: AvailableExamsData, isLoading } = useGetAvailableExams();
 
 	const isEmpty = !AvailableExamsData || AvailableExamsData.length === 0;
 
 	return (
 		<Card className="rounded-none border-none p-0 shadow-sm">
 			<CardContent className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 px-0">
-				{isEmpty ? (
+				{isLoading ? (
+					<EvaluationSkeleton length={3} />
+				) : isEmpty ? (
 					<Empty
 						title="No Available Exams"
 						description="You currently have no exams assigned or available to take. Please check back later."

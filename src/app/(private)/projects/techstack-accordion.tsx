@@ -43,8 +43,8 @@ export default function TechstackAccordion({ data, className }: Props) {
 			<Accordion type="single" className="space-y-4">
 				{isEmpty ? (
 					<Empty
-						title="No Completed Exams"
-						description="You currently have no completed exams."
+						title="No Projects"
+						description="You currently have no project to tackle."
 						Icon={FiInbox}
 					/>
 				) : (
