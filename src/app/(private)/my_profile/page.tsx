@@ -144,7 +144,7 @@ export default function Page() {
 					) : (
 						<>
 							<div className="flex items-center justify-between gap-2">
-								<div className="flex items-center gap-5 justify-center">
+								<div className="flex items-center gap-5  flex-wrap">
 									<ProfileImageUpload
 										previewUrl={previewImage}
 										disabled={isProfileDisabled}
