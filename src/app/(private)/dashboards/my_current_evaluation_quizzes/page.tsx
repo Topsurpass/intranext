@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import { useGetCoursesScores } from '@/api/exam/use-get-all-course-scores';
 import { cn } from '@/lib/utils';
 import Empty from '@/components/empty';
 import { EvaluationSkeleton } from '@/components/skeletons/evaluation-skeleton';
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
 
 export default function Page() {
 	const { data: CoursesScoreData, isLoading } = useGetCoursesScores();
@@ -27,7 +29,7 @@ export default function Page() {
 						Icon={FiInbox}
 					/>
 				) : (
-					CoursesScoreData?.completed_courses?.flatMap((course) =>
+					CoursesScoreData?.completed_courses?.flatMap((course: { exams: any[]; course_title: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }) =>
 						course.exams?.map((exam) => (
 							<div
 								key={exam.exam_id}
