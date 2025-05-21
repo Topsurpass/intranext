@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
-import { FiClock, FiArrowUpRight, FiInbox } from 'react-icons/fi';
+import { FiClock, FiArrowUpRight } from 'react-icons/fi';
 import { useGetAvailableExams } from '@/api/exam/use-get-available-exams';
 import Empty from '@/components/empty';
 import { EvaluationSkeleton } from '@/components/skeletons/evaluation-skeleton';
+import { PiExam } from 'react-icons/pi';
 
 export default function Page() {
 	const { data: AvailableExamsData, isLoading } = useGetAvailableExams();
@@ -21,7 +22,7 @@ export default function Page() {
 					<Empty
 						title="No Available Exams"
 						description="You currently have no exams assigned or available to take. Please check back later."
-						Icon={FiInbox}
+						Icon={PiExam}
 					/>
 				) : (
 					// eslint-disable-next-line @typescript-eslint/no-explicit-any

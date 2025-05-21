@@ -3,20 +3,21 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { FiInbox } from 'react-icons/fi';
 import { useGetCoursesScores } from '@/api/exam/use-get-all-course-scores';
 import { cn } from '@/lib/utils';
 import Empty from '@/components/empty';
 import CardTopHeader from '@/components/card-top-header';
+import { MdCreditScore } from 'react-icons/md';
 
 export default function Scores() {
 	const { data: CoursesScoreData } = useGetCoursesScores();
-	const isEmpty = !CoursesScoreData || CoursesScoreData === 0;
+	const isEmpty =
+		!CoursesScoreData || CoursesScoreData?.completed_courses?.length === 0;
 	console.log(CoursesScoreData);
 
 	return (
 		<Card className="bg-gradient-to-br from-primary/5 to-background space-y-5">
-			<div className="flex justify-between items-center flex-wrap border-b border-white">
+			<div className="flex justify-between items-center flex-wrap border-b border-black dark:border-white">
 				<CardTopHeader
 					title="Course Scores"
 					description="See all your exam scores categorized by course"
@@ -43,17 +44,14 @@ export default function Scores() {
 			<CardContent className="flex flex-col gap-4 ">
 				{isEmpty ? (
 					<Empty
-						title="No scores yet"
+						title="No score recorded"
 						description="Your scores will appear once you start taking course examinations."
-						Icon={FiInbox}
+						Icon={MdCreditScore}
 					/>
 				) : (
 					CoursesScoreData?.completed_courses?.map(
 						(course: any, idx: number) => (
-							<div
-								key={idx}
-								className=""
-							>
+							<div key={idx} className="">
 								<div className="mb-2 flex justify-between gap-1">
 									<p className="font-semibold text-foreground">
 										{course.course_title}
@@ -77,7 +75,7 @@ export default function Scores() {
 											(exam: any, i: number) => (
 												<div
 													key={i}
-													className="flex items-center justify-between border-b pb-2"
+													className="flex items-center justify-between "
 												>
 													<div className="text-sm text-foreground">
 														{exam.exam_title}

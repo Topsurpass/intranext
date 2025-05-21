@@ -1,9 +1,9 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { FiPackage } from 'react-icons/fi';
 import CardTopHeader from '@/components/card-top-header';
 import Empty from '@/components/empty';
+import { LiaProjectDiagramSolid } from 'react-icons/lia';
 
 export default function CurrentProjects() {
 	return (
@@ -14,11 +14,11 @@ export default function CurrentProjects() {
 				classNameHeader="p-5"
 				classNameTitle="text-lg font-semibold"
 			/>
-			<CardContent className="h-48">
+			<CardContent className="p-">
 				<Empty
-					Icon={FiPackage}
-					title="No Active Projects"
-					description="All tasks completed - great work!"
+					Icon={LiaProjectDiagramSolid}
+					title="No Active Project"
+					description="All active projects will be displayed here once they are available."
 				/>
 			</CardContent>
 		</Card>

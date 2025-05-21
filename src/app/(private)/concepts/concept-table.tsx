@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from 'react';
 import Empty from '@/components/empty';
-import { FiInbox } from 'react-icons/fi';
 import {
 	ColumnDef,
 	PaginationState,
@@ -14,6 +13,7 @@ import Link from 'next/link';
 import { useGetConcepts } from '@/api/concept/use-get-concepts';
 import { Concept } from '@/data/concept-data';
 import CardTopHeader from '@/components/card-top-header';
+import { IoLibraryOutline } from 'react-icons/io5';
 
 export default function ConceptTable() {
 	const [searchText, setSearchText] = useState('');
@@ -98,7 +98,7 @@ export default function ConceptTable() {
 				emptyTableData={
 					<Empty
 						title="No concept available"
-						Icon={FiInbox}
+						Icon={IoLibraryOutline}
 						description="Project concepts are yet to be uploaded. Please check back later"
 					/>
 				}

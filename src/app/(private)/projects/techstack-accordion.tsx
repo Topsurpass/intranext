@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { FiFolder, FiFileText, FiCalendar, FiInbox } from 'react-icons/fi';
+import { FiFolder, FiFileText, FiCalendar } from 'react-icons/fi';
+import { LiaProjectDiagramSolid } from 'react-icons/lia';
 import {
 	Accordion,
 	AccordionContent,
@@ -44,8 +45,8 @@ export default function TechstackAccordion({ data, className }: Props) {
 				{isEmpty ? (
 					<Empty
 						title="No Projects"
-						description="You currently have no project to tackle."
-						Icon={FiInbox}
+						description="You are yet to take on any projects."
+						Icon={LiaProjectDiagramSolid}
 					/>
 				) : (
 					data?.map((stack, stackIdx) => (

@@ -2,6 +2,8 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import CardTopHeader from '@/components/card-top-header';
+import Empty from '@/components/empty';
+import { FaRegCalendarAlt } from 'react-icons/fa';
 
 export default function UpcomingEvent() {
 	return (
@@ -12,14 +14,12 @@ export default function UpcomingEvent() {
 				description="Events to watchout for"
 				classNameTitle="text-lg"
 			/>
-			<CardContent>
-				<div className="flex w-full flex-grow flex-col items-start">
-					<div className="h-24 w-full">
-						<p className="flex h-full w-full items-center justify-center text-center">
-							None, enjoy the silence.
-						</p>
-					</div>
-				</div>
+			<CardContent className="p-0">
+				<Empty
+					title="No event"
+					description="Events will appear here as they are scheduled"
+					Icon={FaRegCalendarAlt}
+				/>
 			</CardContent>
 		</Card>
 	);
