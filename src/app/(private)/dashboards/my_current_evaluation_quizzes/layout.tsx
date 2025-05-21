@@ -3,13 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import {
-	Card,
-	CardContent,
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import CardTopHeader from '@/components/card-top-header';
+import { ReactNode } from 'react';
 
-export const curriculumNav = [
+
+const curriculumNav = [
 	{
 		name: 'Completed exams',
 		path: '/dashboards/my_current_evaluation_quizzes',
@@ -20,8 +19,6 @@ export const curriculumNav = [
 	},
 ];
 
-
-import { ReactNode } from 'react';
 
 export default function Layout({ children }: { children: ReactNode }) {
 	const pathname = usePathname();
