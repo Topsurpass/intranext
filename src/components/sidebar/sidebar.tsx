@@ -53,8 +53,7 @@ function SideBar() {
 						className={cn('min-w-max', {
 							hidden: toggleCollapse,
 						})}
-					>
-					</div>
+					></div>
 				</div>
 			</div>
 
@@ -66,7 +65,7 @@ function SideBar() {
 
 			<div className="p-4 mt-auto">
 				{toggleCollapse ? (
-					<div className="flex justify-center align-center">
+					<div className="flex justify-center align-center border py-2 border-red-700 rounded-lg">
 						<LogOut
 							className="text-red-700 cursor-pointer"
 							onClick={logout}
@@ -77,9 +76,8 @@ function SideBar() {
 						onClick={logout}
 						className="bg-primary w-full dark:bg-red-700"
 						type="button"
-					>
-						Logout
-					</Button>
+						label="Logout"
+					/>
 				)}
 			</div>
 		</aside>
