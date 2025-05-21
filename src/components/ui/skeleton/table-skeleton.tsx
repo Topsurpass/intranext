@@ -28,26 +28,31 @@ export function TableSkeleton({
 	className,
 }: ITableSkeleton) {
 	return (
-		<div className={cn('rounded-lg border border-gray-200 ', className)}>
+		<div
+			className={cn(
+				'rounded-lg border border-gray-300 dark:border-gray-200 ',
+				className
+			)}
+		>
 			<style>{shimmerAnimation}</style>
 
-			<div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between border-b border-gray-200">
+			<div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:justify-between border-bborder-gray-200">
 				<div className="w-full sm:w-64">
-					<Skeleton className="h-10 w-full bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+					<Skeleton className="h-10 w-full rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 				</div>
 				<div className="flex gap-3">
-					<Skeleton className="h-10 w-24 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
-					<Skeleton className="h-10 w-32 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+					<Skeleton className="h-10 w-32 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
+					<Skeleton className="h-10 w-32 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 				</div>
 			</div>
 
 			<div className="overflow-x-auto">
-				<Table className="min-w-[800px]">
+				<Table className="md:min-w-[800px]">
 					<TableHeader className="">
 						<TableRow>
 							{[...Array(columns)].map((_, i) => (
 								<TableHead key={i} className="px-4 py-3">
-									<Skeleton className="h-5 w-3/4 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+									<Skeleton className="h-5 w-3/4 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 								</TableHead>
 							))}
 						</TableRow>
@@ -62,10 +67,10 @@ export function TableSkeleton({
 									>
 										<Skeleton
 											className={cn(
-												'h-5 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50',
-												colIndex === 0
-													? 'w-3/4'
-													: 'w-full'
+												'h-5 bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50',
+												// colIndex === 0
+												// 	? 'md:w-3/4'
+												// 	: 'w-full'
 											)}
 										/>
 									</TableCell>
@@ -77,22 +82,22 @@ export function TableSkeleton({
 			</div>
 
 			<div className="flex flex-col items-center gap-4 p-4 sm:flex-row sm:justify-between border-t border-gray-200">
-				<Skeleton className="h-8 w-32 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+				<Skeleton className="h-8 w-32 bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 				<div className="flex items-center gap-2">
-					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
-					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
+					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 					<div className="flex gap-1">
 						{[1, 2, 3].map((page) => (
 							<Skeleton
 								key={page}
-								className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50"
+								className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50"
 							/>
 						))}
 					</div>
-					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
-					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
+					<Skeleton className="h-8 w-8 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 				</div>
-				<Skeleton className="h-8 w-40 bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+				<Skeleton className="h-8 w-40 rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 			</div>
 		</div>
 	);
@@ -104,7 +109,7 @@ export function RowSkeleton({ columns = 7 }: { columns?: number }) {
 		<TableRow>
 			{[...Array(columns)].map((_, i) => (
 				<TableCell key={i} className="px-4 py-3">
-					<Skeleton className="h-5 w-full bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50" />
+					<Skeleton className="h-8 w-full rounded-md bg-gradient-to-r from-gray-200 via-gray-200 to-gray-300 dark:from-gray-50 dark:via-gray-100 dark:to-gray-50" />
 				</TableCell>
 			))}
 		</TableRow>

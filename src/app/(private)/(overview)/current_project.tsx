@@ -1,37 +1,22 @@
 'use client';
 
-import {
-	Card,
-	CardHeader,
-	CardTitle,
-	CardDescription,
-	CardContent,
-} from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { FiPackage } from 'react-icons/fi';
-import { ReactNode } from 'react';
-
-type EmptyStateProps = {
-	icon: ReactNode;
-	title: string;
-	description: string;
-};
+import CardTopHeader from '@/components/card-top-header';
+import Empty from '@/components/empty';
 
 export default function CurrentProjects() {
 	return (
 		<Card className="bg-gradient-to-br from-primary/5 to-background">
-			<CardHeader className="pb-3">
-				<div className="flex items-center justify-between">
-					<div>
-						<CardTitle>Active Projects</CardTitle>
-						<CardDescription>
-							Ongoing initiatives and tasks
-						</CardDescription>
-					</div>
-				</div>
-			</CardHeader>
+			<CardTopHeader
+				title="Active Projects"
+				description="Ongoing initiatives and tasks"
+				classNameHeader="p-5"
+				classNameTitle="text-lg font-semibold"
+			/>
 			<CardContent className="h-48">
-				<EmptyState
-					icon={<FiPackage className="h-8 w-8" />}
+				<Empty
+					Icon={FiPackage}
 					title="No Active Projects"
 					description="All tasks completed - great work!"
 				/>
@@ -39,13 +24,3 @@ export default function CurrentProjects() {
 		</Card>
 	);
 }
-
-const EmptyState = ({ icon, title, description }: EmptyStateProps) => (
-	<div className="flex h-full flex-col items-center justify-center gap-3 text-center">
-		<div className="rounded-full bg-muted p-4">{icon}</div>
-		<div className="space-y-1">
-			<p className="font-medium">{title}</p>
-			<p className="text-sm text-muted-foreground">{description}</p>
-		</div>
-	</div>
-);

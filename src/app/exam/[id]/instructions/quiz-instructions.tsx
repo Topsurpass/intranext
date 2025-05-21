@@ -9,21 +9,21 @@ export default function QuizInstructions({ id }: { id: string }) {
 
 	return (
 		<div className="relative flex min-h-screen flex-col items-center justify-center p-0">
-			<div>
+			<div className='border p-5 max-w-lg	 rounded-2xl flex flex-col gap-3'>
 				<div className="mb-10 text-center">
-					<h1 className="text-4xl font-bold  mb-4">{exam?.title}</h1>
+					<h1 className="text-2xl font-bold">{exam?.title}</h1>
 					<p className="text-lg">
 						Please review the following guidelines carefully before
 						starting your assessment
 					</p>
 				</div>
-				<div className="space-y-8 mb-12">
+				<div className="space-y-8">
 					<div>
 						<p>{exam?.description}</p>
 					</div>
 
 					<div className=" p-6 rounded-lg border">
-						<h3 className="text-lg font-semibold  mb-3">
+						<h3 className="text-lg font-semibold">
 							Key Details
 						</h3>
 						<ul className="space-y-2">

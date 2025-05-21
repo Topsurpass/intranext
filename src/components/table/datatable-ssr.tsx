@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react';
-// import { useQueryClient } from "@tanstack/react-query";
+import { ReactNode, useEffect, useState } from 'react';
+
 import {
 	ColumnDef,
-	// ColumnFiltersState,
 	flexRender,
 	getCoreRowModel,
-	// getFacetedRowModel,
-	// getFacetedUniqueValues,
 	getFilteredRowModel,
 	getPaginationRowModel,
 	getSortedRowModel,
 	OnChangeFn,
 	PaginationState,
-	// SortingState,
 	useReactTable,
-	// VisibilityState,
 } from '@tanstack/react-table';
-// import { RefreshCw } from "lucide-react";
-// import QueryKeys from "@/api/query-keys";
-// import { FilterStatus } from "@/types/enum";
-// import { cn } from "@/lib/utils.ts";
-// import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+
 import {
 	Table,
 	TableBody,
@@ -30,13 +21,11 @@ import {
 	TableHeader,
 	TableRow,
 } from '.';
-// import { Button } from "../button";
 import { TableSkeleton } from '@/components/ui/skeleton/table-skeleton';
 import DataTablePagination from '@/components/table/datatable-pagination';
 import DatatableSearchInputSSR from '@/components/table/datatable-search-input';
 import DatatableStatusFilterSsr from '@/components/table/datatable-status-filter-ssr';
 import DatatableViewOptions from '@/components/table/datatable-view-options';
-// import DatatableViewOptions from "./datatable-view-options";
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
@@ -60,6 +49,7 @@ interface DataTableProps<TData, TValue> {
 	numOfSkeletonColumns?: number;
 	numOfSkeletonRows?: number;
 	filterStatusData?: { value: string; label: string }[];
+	emptyTableData?: ReactNode | string;
 }
 
 export default function DataTableSSR<TData, TValue>({
@@ -82,6 +72,7 @@ export default function DataTableSSR<TData, TValue>({
 	showFilter = true,
 	numOfSkeletonColumns = 7,
 	numOfSkeletonRows = 14,
+	emptyTableData = 'No Resuslt',
 }: DataTableProps<TData, TValue>) {
 	const [globalFilter, setGlobalFilter] = useState('');
 
@@ -212,7 +203,9 @@ export default function DataTableSSR<TData, TValue>({
 									colSpan={columns?.length}
 									className="h-48 text-center text-muted-foreground"
 								>
-									No results
+									{/* No results */}
+
+									{emptyTableData}
 								</TableCell>
 							</TableRow>
 						)}
