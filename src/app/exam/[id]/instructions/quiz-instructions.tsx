@@ -9,7 +9,7 @@ export default function QuizInstructions({ id }: { id: string }) {
 
 	return (
 		<div className="relative flex min-h-screen flex-col items-center justify-center p-0">
-			<div className='border p-5 max-w-lg	 rounded-2xl flex flex-col gap-3'>
+			<div className="border p-5 max-w-lg	 rounded-2xl flex flex-col gap-3">
 				<div className="mb-10 text-center">
 					<h1 className="text-2xl font-bold">{exam?.title}</h1>
 					<p className="text-lg">
@@ -23,9 +23,7 @@ export default function QuizInstructions({ id }: { id: string }) {
 					</div>
 
 					<div className=" p-6 rounded-lg border">
-						<h3 className="text-lg font-semibold">
-							Key Details
-						</h3>
+						<h3 className="text-lg font-semibold">Key Details</h3>
 						<ul className="space-y-2">
 							<li className="flex items-center gap-3">
 								<CheckCircle2 className="w-4 h-4 flex-shrink-0" />
