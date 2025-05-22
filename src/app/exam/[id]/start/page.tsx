@@ -4,13 +4,15 @@ import QuizTestContainer from './quiz-test-container';
 import { use } from 'react';
 import RouteGuard from '@/routes/route-guard';
 
-export function QuizTestPage({ params }: { params: Promise<{ id: string }> }) {
+export default function QuizTestPage({ params }: { params: Promise<{ id: string }> }) {
 	const { id } = use(params);
 	return (
-		<div className="min-h-screen flex justify-center items-center bg-background">
-			<QuizTestContainer id={id} />
-		</div>
+		<RouteGuard>
+			<div className="min-h-screen flex justify-center items-center bg-background">
+				<QuizTestContainer id={id} />
+			</div>
+		</RouteGuard>
 	);
 }
 
-export default RouteGuard(QuizTestPage);
+

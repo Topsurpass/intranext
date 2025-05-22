@@ -1,41 +1,37 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import useAuthStore from '@/store/user-store';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function RouteGuard(Component: any) {
-	return function RouteGuard(props: React.ComponentProps<typeof Component>) {
-		const router = useRouter();
-		const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-		const [isHydrated, setIsHydrated] = useState(false);
+type Props = {
+	children: ReactNode;
+};
 
-		// Ensure Zustand store is hydrated
-		useEffect(() => {
-			const unsubscribe = useAuthStore.persist.onFinishHydration(() => {
-				setIsHydrated(true);
-			});
+export default function RouteGuard({ children }: Props) {
+	const router = useRouter();
+	const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+	const [isHydrated, setIsHydrated] = useState(false);
 
-			// If Zustand has already hydrated, set it immediately
-			if (useAuthStore.persist.hasHydrated()) {
-				setIsHydrated(true);
-			}
+	useEffect(() => {
+		const unsubscribe = useAuthStore.persist.onFinishHydration(() => {
+			setIsHydrated(true);
+		});
 
-			return () => unsubscribe();
-		}, []);
+		if (useAuthStore.persist.hasHydrated()) {
+			setIsHydrated(true);
+		}
 
-		// Redirect if not authenticated AFTER hydration
-		useEffect(() => {
-			if (isHydrated && !isAuthenticated) {
-				router.replace('/login');
-			}
-		}, [isHydrated, isAuthenticated, router]);
+		return () => unsubscribe();
+	}, []);
 
-		// Prevent rendering until hydration is complete
-		if (!isHydrated) return null;
-		if (!isAuthenticated) return null;
+	useEffect(() => {
+		if (isHydrated && !isAuthenticated) {
+			router.replace('/login');
+		}
+	}, [isHydrated, isAuthenticated, router]);
 
-		return <Component {...props} />;
-	};
+	if (!isHydrated || !isAuthenticated) return null;
+
+	return <>{children}</>;
 }

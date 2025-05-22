@@ -13,7 +13,6 @@ export default function Scores() {
 	const { data: CoursesScoreData } = useGetCoursesScores();
 	const isEmpty =
 		!CoursesScoreData || CoursesScoreData?.completed_courses?.length === 0;
-	console.log(CoursesScoreData);
 
 	return (
 		<Card className="bg-gradient-to-br from-primary/5 to-background space-y-5">

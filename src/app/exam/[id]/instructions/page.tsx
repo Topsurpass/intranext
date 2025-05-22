@@ -4,7 +4,7 @@ import QuizInstructions from './quiz-instructions';
 import { use } from 'react';
 import RouteGuard from '@/routes/route-guard';
 
-export function QuizInstruction({
+export default function QuizInstruction({
 	params,
 }: {
 	params: Promise<{ id: string }>;
@@ -12,10 +12,10 @@ export function QuizInstruction({
 	const { id } = use(params);
 
 	return (
-		<div className="min-h-screen  px-4">
-			<QuizInstructions id={id} />
-		</div>
+		<RouteGuard>
+			<div className="min-h-screen  px-4">
+				<QuizInstructions id={id} />
+			</div>
+		</RouteGuard>
 	);
 }
-
-export default RouteGuard(QuizInstruction);

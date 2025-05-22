@@ -1,17 +1,24 @@
-'use client';
-
 import { use } from 'react';
 import ExamReviewQuestions from './exams-questions';
 import RouteGuard from '@/routes/route-guard';
 
-export function ExamReview({ params }: { params: Promise<{ id: string }> }) {
+
+export default  function ExamReview({
+	params,
+}: {
+	params: Promise<{ id: string }>;
+}) {
 	const { id } = use(params);
 
 	return (
-		<div className="min-h-screen  px-4">
-			<ExamReviewQuestions id={id} />
+		<RouteGuard>
+<div className="min-h-screen  px-4">
+
+			<ExamReviewQuestions id={id}/>
 		</div>
+
+		</RouteGuard>
+		
 	);
 }
 
-export default RouteGuard(ExamReview);

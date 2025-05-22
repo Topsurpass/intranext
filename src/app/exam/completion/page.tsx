@@ -3,12 +3,12 @@
 import QuizCompletion from './quiz-completion';
 import RouteGuard from '@/routes/route-guard';
 
-export function QuizCompletionPage() {
+export default function QuizCompletionPage() {
 	return (
-		<div className="min-h-screen px-4">
-			<QuizCompletion />
-		</div>
+		<RouteGuard>
+			<div className="min-h-screen px-4">
+				<QuizCompletion />
+			</div>
+		</RouteGuard>
 	);
 }
-
-export default RouteGuard(QuizCompletionPage);

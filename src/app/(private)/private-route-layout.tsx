@@ -7,16 +7,20 @@ import RouteGuard from '@/routes/route-guard';
 
 import { ReactNode } from 'react';
 
-export const PrivateRouteLayout = ({ children }: { children: ReactNode }) => {
+const PrivateRouteLayout = ({ children }: { children: ReactNode }) => {
 	return (
-		<div className="w-full">
-			<SideBar />
-			<div className="flex flex-1 flex-col">
-				<Header />
-				<PageWrapper>{children}</PageWrapper>
+		<RouteGuard>
+			<div className="w-full">
+				<SideBar />
+				<div className="flex flex-1 flex-col">
+					<Header />
+					<PageWrapper>{children}</PageWrapper>
+				</div>
 			</div>
-		</div>
+		</RouteGuard>
 	);
 };
 
-export default RouteGuard(PrivateRouteLayout);
+PrivateRouteLayout.displayName = 'PrivateRouteLayout';
+
+export default PrivateRouteLayout;
