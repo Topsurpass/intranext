@@ -10,7 +10,7 @@ export default function Welcome() {
 	return (
 		<Card className="relative overflow-hidden bg-gradient-to-br from-primary/10 to-background shadow-lg rounded-xl">
 			<CardTopHeader
-				title={`Welcome Back ${userProfile?.first_name}, ${userProfile?.last_name}!`}
+				title={`Welcome Back ${userProfile?.first_name || ''}, ${userProfile?.last_name || ''}!`}
 				description="Your dedication to learning is inspiring! Keep up the great
 					work. 🚀"
 				classNameHeader="space-y-2 px-5"

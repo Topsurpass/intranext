@@ -8,7 +8,6 @@ import { useGetCoursesScores } from '@/api/exam/use-get-all-course-scores';
 import { cn } from '@/lib/utils';
 import Empty from '@/components/empty';
 import { EvaluationSkeleton } from '@/components/skeletons/evaluation-skeleton';
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
 import { PiExam } from 'react-icons/pi';
 
 
@@ -32,37 +31,7 @@ export default function Page() {
 					/>
 				) : (
 					CoursesScoreData?.completed_courses?.flatMap(
-						(course: {
-							exams: any[];
-							course_title:
-								| string
-								| number
-								| bigint
-								| boolean
-								| ReactElement<
-										unknown,
-										string | JSXElementConstructor<any>
-								  >
-								| Iterable<ReactNode>
-								| ReactPortal
-								| Promise<
-										| string
-										| number
-										| bigint
-										| boolean
-										| ReactPortal
-										| ReactElement<
-												unknown,
-												| string
-												| JSXElementConstructor<any>
-										  >
-										| Iterable<ReactNode>
-										| null
-										| undefined
-								  >
-								| null
-								| undefined;
-						}) =>
+						(course: { exams: any[]; course_title: any }) =>
 							course.exams?.map((exam) => (
 								<div
 									key={exam.exam_id}
@@ -72,7 +41,7 @@ export default function Page() {
 										<div className="space-y-2">
 											<div className="flex flex-col md:flex-row md:items-center justify-between">
 												<span className="rounded-full py-1 text-lg font-medium text-primary">
-													{course.course_title}
+													{course.course_title as any}
 												</span>
 												<span className="text-xs">
 													{new Date(
@@ -130,11 +99,11 @@ export default function Page() {
 										</div>
 
 										<Link
-											href={`/exam/${exam.exam_id}/instructions`}
+											href={`/exam/${exam.exam_id}/review`}
 											className="flex items-center justify-between rounded-lg bg-muted/50 p-3 transition-colors hover:bg-muted"
 										>
 											<span className="text-sm font-medium">
-												View Exam Questions
+												Review Exam Questions
 											</span>
 											<FiArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
 										</Link>

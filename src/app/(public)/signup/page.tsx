@@ -43,7 +43,7 @@ export default function SignUp() {
 	};
 
 	return (
-		<div className="relative flex md:min-h-screen flex-col items-center justify-center overflow-hidden ">
+		<div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden ">
 			{/*<pre>{JSON.stringify(watch(), null, 2)}</pre>*/}
 
 			<form
@@ -53,7 +53,7 @@ export default function SignUp() {
 				<Card className="">
 					<CardHeader className="text-center">
 						{' '}
-						<CardTitle className="text-2xl md:text-3xl font-bold ">
+						<CardTitle className="text-xl font-bold ">
 							Create Learner Account
 						</CardTitle>
 						<CardDescription className="">

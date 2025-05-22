@@ -51,8 +51,7 @@ export default function Login() {
 				onSubmit={handleSubmit(processForm)}
 			>
 				<Card className="shadow-xl rounded-2xl border">
-					<CardHeader className="flex flex-col space-y-2 items-center px-8 pt-5 pb-6">
-						<div className="mb-6"></div>
+					<CardHeader className="flex flex-col space-y-2 items-center px-8 pt-5 ">
 						<CardTitle className="text-xl  font-bold text-gray-900 dark:text-white">
 							Welcome Back
 						</CardTitle>
