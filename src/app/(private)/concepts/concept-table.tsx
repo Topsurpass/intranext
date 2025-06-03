@@ -47,7 +47,7 @@ export default function ConceptTable() {
 			{
 				accessorKey: 'title',
 				header: () => (
-					<span className="text-xl font-semibold">Concept Title</span>
+					<span className="text-xl font-semibold">Topics</span>
 				),
 				cell: ({ row }) => (
 					<Link

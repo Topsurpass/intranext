@@ -8,6 +8,16 @@ import Empty from '@/components/empty';
 import { EvaluationSkeleton } from '@/components/skeletons/evaluation-skeleton';
 import { PiExam } from 'react-icons/pi';
 
+type ExamProp = {
+	exam_id: string;
+	exam_title: string;
+	description: string;
+	duration: number;
+	course_id: string;
+	course_title: string;
+	course_description: string;
+};
+
 export default function Page() {
 	const { data: AvailableExamsData, isLoading } = useGetAvailableExams();
 
@@ -25,8 +35,7 @@ export default function Page() {
 						Icon={PiExam}
 					/>
 				) : (
-					// eslint-disable-next-line @typescript-eslint/no-explicit-any
-					AvailableExamsData?.map((data: any) => (
+					AvailableExamsData?.map((data: ExamProp) => (
 						<div
 							key={data?.course_id}
 							className="group relative overflow-hidden rounded-xl border bg-card p-6 transition-all hover:border-primary/30 hover:bg-gradient-to-br hover:from-card/50 hover:to-[rgba(255,255,255,0.15)] hover:shadow-md dark:hover:to-[rgba(0,0,0,0.2)]"

@@ -11,6 +11,18 @@ import { EvaluationSkeleton } from '@/components/skeletons/evaluation-skeleton';
 import { PiExam } from 'react-icons/pi';
 
 
+// type ExamsProps = {
+// 	course_title: string;
+// 	course_description: string;
+// 	exams: {
+// 		exam_id: string;
+// 		exam_title: string;
+// 		duration: number;
+// 		score: number;
+// 		submitted_at: string;
+// 	}[];
+// };
+
 export default function Page() {
 	const { data: CoursesScoreData, isLoading } = useGetCoursesScores();
 
@@ -31,7 +43,7 @@ export default function Page() {
 					/>
 				) : (
 					CoursesScoreData?.completed_courses?.flatMap(
-						(course: { exams: any[]; course_title: any }) =>
+						(course: { exams: any[]; course_title: string }) =>
 							course.exams?.map((exam) => (
 								<div
 									key={exam.exam_id}
